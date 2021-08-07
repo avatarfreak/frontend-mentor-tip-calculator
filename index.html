@@ -56,7 +56,7 @@
           <!-- Total Person  Section-->
           <div class="app__people">
 
-            <label for="person" class="people-label">Number of People</label>
+            <label for="person" class="people-label"></label>Number of People</label>
             <div class="app__people-wrapper">
               <img src="images/icon-person.svg" alt="person logo">
               <input type="number" id="person" class="peopleCount" placeholder="0">
@@ -66,21 +66,20 @@
         <!-- Bill Display Section -->
         <div class="bill__display">
           <div class="bill__display__wrapper">
-            <div class="bill__display-first">
+            <div class="bill__display-first" aria-live="polite">
               <div class="bill__display-content">
-                <div class="bill__display-flow">Tip Amount</div>
-                <div class="bill__display-person">/ person</div>
+                <p class="bill__display-flow">Tip Amount</p>
+                <p class="bill__display-person">/ person</p>
               </div>
-              <div class="bill__display-total">&#36;<span class="tip" aria-live="polite"
-                  aria-label="Tip amount per person">0.00</span></div>
+              <div class="bill__display-total">&#36;<span class="tip" aria-label="Tip amount per person">0.00</span>
+              </div>
             </div>
-            <div class="bill__display-second">
+            <div class="bill__display-second" aria-live="polite">
               <div class="bill__display-content">
-                <div class="bill__display-flow">Total</div>
-                <div class="bill__display-person">/ person</div>
+                <p class="bill__display-flow">Total</p>
+                <p class="bill__display-person">/ person</p>
               </div>
-              <p class="bill__display-total">&#36;<span class="total" aria-live="polite"
-                  aria-label="Total amount per person">0.00</span>
+              <p class="bill__display-total">&#36;<span aria-label="total per person" class="total">0.00</span>
               </p>
             </div>
             <button class="bill__display-reset">Reset</button>
