@@ -144,7 +144,23 @@ main {
 
 form label.bill-label {
   margin: 0.25rem 0;
+  position: relative;
 }
+
+form label.bill-label::after {
+  --error-text: "can't be negative";
+  content: var(--error-text);
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--text-danger);
+  display: none;
+}
+
+form label.bill-label.active::after {
+  display: block;
+}
+
 .app__calculation {
   position: relative;
   margin-top: 0.5rem;
