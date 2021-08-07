@@ -1,5 +1,6 @@
 //Getting element
-const inputText = document.querySelector("input.bill__input");
+const billInput = document.querySelector("input.bill__input");
+const billLabel = document.querySelector(".bill-label");
 const radBtn = document.querySelectorAll("input[name='tip']");
 const customInput = document.querySelector("#tipcustom");
 const peopleCount = document.querySelector("input.peopleCount");
@@ -46,10 +47,26 @@ const totalPerPerson = () => {
   )(payment).toFixed(2);
 };
 
+//Bill
+billInput.addEventListener("input", (evt) => {
+  let billAmount = Number(evt.target.value);
+  if (billAmount < 0) {
+    payment = 0;
+    billLabel.classList.add("active");
+  } else {
+    billLabel.classList.remove("active");
+    payment = billAmount;
+  }
+
+  //Display output
+  tipAmountPerPerson();
+  totalPerPerson();
+});
+
 //Loop all radio buttons
 radBtn.forEach((buttons) => {
   buttons.addEventListener("change", (evt) => {
-    let value = evt.target.value; //getting value of element
+    let value = Number(evt.target.value); //getting value of element
     if (evt.target.checked) {
       customInput.value = ""; //clear custom tip input if radio button is checked
     }
@@ -63,7 +80,7 @@ radBtn.forEach((buttons) => {
 
 //Custom input
 customInput.addEventListener("input", (evt) => {
-  let value = evt.target.value;
+  let value = Number(evt.target.value);
 
   //condition insure input is greater than 0
   if (value >= 0) {
@@ -74,6 +91,8 @@ customInput.addEventListener("input", (evt) => {
       }
     });
     tip = getValue(value);
+  } else {
+    tip = getValue(0);
   }
 
   //Display output
@@ -82,10 +101,11 @@ customInput.addEventListener("input", (evt) => {
 });
 
 peopleCount.addEventListener("input", (evt) => {
-  let value = evt.target.value;
+  let value = Number(evt.target.value);
 
   //Toggle the class of the elements  depending on the value.
   if (value <= 0) {
+    numOfPerson = 0;
     evt.target.classList.add("active");
     peopleLabel.classList.add("active");
   } else {
@@ -93,18 +113,18 @@ peopleCount.addEventListener("input", (evt) => {
     evt.target.classList.remove("active");
 
     numOfPerson = getValue(value);
-    payment = getValue(inputText.value || 0);
-
-    //Display output
-    tipAmountPerPerson();
-    totalPerPerson();
+    // payment = getValue(billInput.value || 0);
   }
+
+  //Display output
+  tipAmountPerPerson();
+  totalPerPerson();
 });
 
 const reset = () => {
   tipAmount.textContent = "0.00";
   totAmount.textContent = "0.00";
-  inputText.value = "";
+  billInput.value = "";
   peopleCount.value = "";
   customInput.value = "";
   tip = 0;
@@ -112,6 +132,7 @@ const reset = () => {
   payment = 0;
   peopleLabel.classList.remove("active");
   peopleCount.classList.remove("active");
+  billLabel.classList.remove("active");
   radBtn.forEach((btn) => (btn.checked = false));
 };
 
