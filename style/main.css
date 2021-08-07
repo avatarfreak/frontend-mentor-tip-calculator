@@ -117,6 +117,18 @@ header {
   text-align: center;
 }
 
+h1.logo {
+  color: hsl(180, 25%, 32%);
+  line-height: 1.5;
+  font-size: var(--fs-size-md);
+  letter-spacing: 9.84px;
+  font-weight: var(--fw-weight-bold);
+}
+
+h1 span {
+  display: block;
+}
+
 /*-------------------Main Section-----------------------------*/
 
 main {
@@ -153,9 +165,6 @@ form label.bill-label {
 input[type="radio"] {
   position: fixed;
   opacity: 0;
-  visibility: hidden;
-  height: 0;
-  width: 0;
 }
 
 label.bill-select {
