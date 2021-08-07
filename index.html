@@ -21,7 +21,7 @@
   <div class="app__wrapper">
     <header>
       <div class="header__logo">
-        <img src="./images/logo.svg" alt="logo homepage">
+        <h1 class="logo">SPLI<span>TTER</span></h1>
       </div>
     </header>
     <main>
@@ -37,7 +37,7 @@
             </div>
             <!-- Tip Button Section-->
             <div class="app__tips">
-              <label for="tip" class="bill-select">Select Tip %</label>
+              <label class="bill-select">Select Tip %</label>
               <div class="app__radio__group">
                 <input type="radio" name="tip" id="tip5" value='5'>
                 <label for="tip5">5%</label>
@@ -56,10 +56,10 @@
           <!-- Total Person  Section-->
           <div class="app__people">
 
-            <label for="number" class="people-label"> Number of People</label>
+            <label for="person" class="people-label">Number of People</label>
             <div class="app__people-wrapper">
               <img src="images/icon-person.svg" alt="person logo">
-              <input type="number" class="peopleCount" placeholder="0">
+              <input type="number" id="person" class="peopleCount" placeholder="0">
             </div>
           </div>
         </div>
@@ -71,14 +71,16 @@
                 <div class="bill__display-flow">Tip Amount</div>
                 <div class="bill__display-person">/ person</div>
               </div>
-              <div class="bill__display-total">&#36;<span class="tip">0.00</span></div>
+              <div class="bill__display-total">&#36;<span class="tip" aria-live="polite"
+                  aria-label="Tip amount per person">0.00</span></div>
             </div>
             <div class="bill__display-second">
               <div class="bill__display-content">
                 <div class="bill__display-flow">Total</div>
                 <div class="bill__display-person">/ person</div>
               </div>
-              <p class="bill__display-total">&#36;<span class="total">0.00</span>
+              <p class="bill__display-total">&#36;<span class="total" aria-live="polite"
+                  aria-label="Total amount per person">0.00</span>
               </p>
             </div>
             <button class="bill__display-reset">Reset</button>
